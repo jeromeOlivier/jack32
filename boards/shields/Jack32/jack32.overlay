@@ -1,0 +1,59 @@
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        col-gpios
+            = <&pro_micro 3 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 28 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 27 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 26 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 22 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 20 GPIO_ACTIVE_HIGH>
+            ;
+
+        row-gpios
+            = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+    };
+};
+
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix-transform = &default_transform;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <10>;
+        rows = <8>;
+// | SW1  | SW2  | SW3  | SW4  | SW5  |     | SW6  | SW7  | SW8  | SW9  | SW10 |
+// | SW11 | SW12 | SW13 | SW14 | SW15 |     | SW16 | SW17 | SW18 | SW19 | SW20 |
+// | SW21 | SW22 | SW23 | SW24 | SW25 |     | SW26 | SW27 | SW28 | SW29 | SW30 |
+//                             | SW31 |     | SW32 |
+        map = <
+RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7)      RC(29,28) RC(29,27) RC(29,26) RC(29,22) RC(29,20)
+RC(8,3) RC(8,4) RC(8,5) RC(8,6) RC(8,7)      RC(23,28) RC(23,27) RC(23,26) RC(23,22) RC(23,20)
+RC(9,3) RC(9,4) RC(9,5) RC(9,6) RC(9,7)      RC(21,28) RC(21,27) RC(21,26) RC(21,22) RC(21,20)
+                                RC(12,7)     RC(16,28)
+        >;
+    };
+}

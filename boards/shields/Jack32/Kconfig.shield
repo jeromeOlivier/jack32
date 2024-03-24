@@ -1,0 +1,6 @@
+# Jack32 Keyboard Configuration
+
+config JACK32_KEYBOARD
+    def_bool $(shields_list_contains,Jack32)
+
+# Add more configuration options as needed

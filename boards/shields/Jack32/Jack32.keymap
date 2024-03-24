@@ -1,0 +1,43 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+        layers = <
+            &alpha
+            &symbols_numbers
+            &navigation_function
+        >;
+    };
+
+    alpha: layer_0 {
+        compatible = "zmk,layer";
+        bindings = <
+            &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P
+            &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &kp ENTER
+            &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH
+            &kp SPACE &kp BACKSPACE
+        >;
+    };
+
+    symbols_numbers: layer_1 {
+        compatible = "zmk,layer";
+        bindings = <
+            &kp 1 &kp 2 &kp 3 &kp 4 &kp 5 &kp 6 &kp 7 &kp 8 &kp 9 &kp 0
+            &kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &kp PERCENT &kp CIRCUMFLEX &kp AMPERSAND &kp ASTERISK &kp LEFT_PAREN &kp RIGHT_PAREN
+            &kp UNDERSCORE &kp PLUS &kp LEFT_BRACE &kp RIGHT_BRACE &kp PIPE &kp COLON &kp QUOTE &kp TILDE &kp LESS &kp GREATER
+            &trans &trans
+        >;
+    };
+
+    navigation_function: layer_2 {
+        compatible = "zmk,layer";
+        bindings = <
+            &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+            &kp F11 &kp F12 &kp INSERT &kp HOME &kp PAGE_UP &kp DELETE &kp END &kp PAGE_DOWN &kp RIGHT_ARROW &kp LEFT_ARROW
+            &kp DOWN_ARROW &kp UP_ARROW &kp TAB &kp CAPS_LOCK &kp SHIFT &kp CTRL &kp ALT &kp GUI
+            &trans &trans
+        >;
+    };
+};
