@@ -1,6 +1,6 @@
 # Jack32v1 Keyboard Configuration
 
 config SHIELD_JACK32V1
-    def_bool $(shields_list_contains, Jack32v1)
+    def_bool $(shields_list_contains,Jack32v1)
 
 # Add more configuration options as needed
