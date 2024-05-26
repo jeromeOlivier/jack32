@@ -1,0 +1,53 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,kscan = &default_kscan;
+        zmk,matrix_transform = &default_transform;
+    };
+
+    default_kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "default_kscan";
+        diode-direction = "col2row";
+
+        col-gpios = <&pro_micro 3 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 4 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 5 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 6 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 7 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 28 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 27 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 26 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 22 GPIO_ACTIVE_HIGH>,
+                    <&pro_micro 20 GPIO_ACTIVE_HIGH>;
+
+        row-gpios = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 23 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+            
+    };
+
+    default_transform: matrix_transform {
+        compatible = "zmk,matrix-transform";
+        columns = <10>;
+        rows = <8>;
+/*
+        TR1 TR2 TR3 TR4 TR5 --- --- TR6 TR7 TR8 TR9 TR10
+        MR1 MR2 MR3 MR4 MR5 --- --- MR6 MR7 MR8 MR9 MR10
+        BR1 BR2 BR3 BR4 BR5 --- --- BR6 BR7 BR8 BR9 BR10
+        --- --- --- --- TH5 --- --- TH6 --- --- --- ----
+*/
+        map = <
+                RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7)      RC(29,28) RC(29,27) RC(29,26) RC(29,22) RC(29,20)
+                RC(8,3) RC(8,4) RC(8,5) RC(8,6) RC(8,7)      RC(23,28) RC(23,27) RC(23,26) RC(23,22) RC(23,20)
+                RC(9,3) RC(9,4) RC(9,5) RC(9,6) RC(9,7)      RC(21,28) RC(21,27) RC(21,26) RC(21,22) RC(21,20)
+                                                RC(12,7)     RC(16,28)
+        >;
+    };
+}
