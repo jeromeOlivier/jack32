@@ -1,9 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-#include "../zmk-nodefree-config/helper.h"
-#include "../zmk-nodefree-config/keypos_48keys.h"
-
 / {
     keymap {
         compatible = "zmk,keymap";
