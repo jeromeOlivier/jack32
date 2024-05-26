@@ -1,6 +1,6 @@
-if SHIELD_MY_BOARD
+if SHIELD_JACK32V1
 
 config ZMK_KEYBOARD_NAME
-    default "Jack 32"
+    default "Jack32v1"
 
 endif
