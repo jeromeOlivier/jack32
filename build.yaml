@@ -18,5 +18,5 @@
 #
 ---
 include:
-  - board: rp2040
+  - board: nice_nano_v2
     shield: Jack32
